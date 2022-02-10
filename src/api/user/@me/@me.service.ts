@@ -9,7 +9,7 @@ import {
   IMeResponse,
   IRemoveBookmarkReq,
   IFeedFetchRequest,
-  IMeFetchRequest
+  IMeFetchRequest,
 } from './@me.interfaces';
 import { Hoots } from 'src/schema/hoots.model';
 import { Bookmark } from 'src/schema/bookmark.model';

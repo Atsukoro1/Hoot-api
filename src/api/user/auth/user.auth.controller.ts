@@ -2,7 +2,7 @@ import { Controller, Post, Body, Headers } from '@nestjs/common';
 import {
   ILoginReq,
   IRegisterReq,
-  IUserAuthResponse
+  IUserAuthResponse,
 } from './user.auth.interfaces';
 import { UserAuthService } from './user.auth.service';
 import { validate, registerSchema, loginSchema } from './user.auth.validators';

@@ -18,8 +18,7 @@ import { UsersModule } from './api/user/users/users.module';
     HootsModule,
     UsersModule,
     ConfigModule.forRoot(),
-    MongooseModule.forRoot(process.env.MONGO_URI)
-  ]
+    MongooseModule.forRoot(process.env.MONGO_URI),
+  ],
 })
-
 export class AppModule {}
