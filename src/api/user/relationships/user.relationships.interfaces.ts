@@ -1,27 +1,24 @@
 export interface IFollowQuery {
-    id: string;
+  id: string;
 }
 
 export interface IRemoveFollowQuery {
-    id: string;
+  id: string;
 }
 
 export interface IBlockQuery {
-    id: string;
+  id: string;
 }
 
 export interface IUnblockQuery {
-    id: string;
+  id: string;
 }
 
 export interface IRelationshipsResponse {
-    success: boolean,
-    message?: string
+  success: boolean;
+  message?: string;
 }
 
 export class RelationshipsResponse {
-    constructor(
-        public success: boolean,
-        public message: string
-    ) {};
-} 
+  constructor(public success: boolean, public message: string) {}
+}
