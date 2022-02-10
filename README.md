@@ -1,2 +1,2 @@
-# Hoot-api
- Backend for my Twitter application clone
+# Hoot
+ Twitter-like application backend
