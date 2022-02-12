@@ -34,9 +34,11 @@ export class MeService {
     if (response.length == 0)
       return new MeResponse(false, 'No followers found', undefined);
 
-    const userIds = response.map(
+    let userIds = response.map(
       (user) => new Types.ObjectId(user.to.toString()),
     );
+
+    userIds.push(new Types.ObjectId(body.userId.toString()))
 
     const options = {
       page: body.page ? body.page : 1,
