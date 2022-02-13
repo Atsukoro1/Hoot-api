@@ -42,7 +42,9 @@ export class HootsService {
       hoot.replies.push(newHootReply._id.toString());
       await hoot.save();
 
-      return new HootResponse(true, undefined, newHootReply);
+      const hootModelToReturn = await this.userModel.populate(newHootReply, { path: "author", select: "username _id" });
+
+      return new HootResponse(true, undefined, hootModelToReturn);
     } else {
       const newHoot = new this.hootsModel(body);
       newHoot.save();
@@ -51,7 +53,9 @@ export class HootsService {
       user.hoots.push(newHoot._id.toString());
       user.save();
 
-      return new HootResponse(true, undefined, newHoot);
+      const hootModelToReturn = await this.userModel.populate(newHoot, { path: "author", select: "username _id" });
+
+      return new HootResponse(true, undefined, hootModelToReturn);
     }
   }
 
