@@ -53,7 +53,7 @@ export class UsersService {
       10,
     );
 
-    const hoots = await this.hootsModel.find({ _id: { $in: idsToGet } });
+    const hoots = await this.hootsModel.find({ _id: { $in: idsToGet }}).populate("author", "_id username").exec();
 
     const data: any = {};
     data.user = user;
