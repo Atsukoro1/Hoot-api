@@ -42,7 +42,7 @@ export class UsersService {
 
   async fetchProfile(body: IProfileRequest): Promise<IUsersResponse> {
     const user = await this.userModel.findById(
-      body.userId,
+      body.id,
       {},
       { select: '-password -ua' },
     );
