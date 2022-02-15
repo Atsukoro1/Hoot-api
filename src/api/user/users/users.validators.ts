@@ -22,15 +22,6 @@ export const getProfileSchema = Joi.object({
 
 export const getFollowsSchema = Joi.object({
   page: Joi.number().optional().min(1),
-  id: Joi.string()
-    .custom((value, helper) => {
-      if (!isValidObjectId(value)) {
-        return helper.message({ custom: 'Id is not valid!' });
-      } else {
-        return true;
-      }
-    })
-    .required()
 }).options({ stripUnknown: true });
 
 export const validate = function (body, validator) {

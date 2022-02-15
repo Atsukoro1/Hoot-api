@@ -27,6 +27,7 @@ export class UsersService {
       page: body.page ? body.page : 1,
       limit: 10,
       lean: false,
+      useEstimatedCount: true,
       select: '-password -ua',
     };
 
@@ -66,9 +67,10 @@ export class UsersService {
       page: body.page ? body.page : 1,
       limit: 10,
       lean: false,
+      useEstimatedCount: true,
       populate: {
         path: 'to',
-        select: '-password -ua -email',
+        select: '-password -ua',
       },
     };
 
@@ -77,13 +79,13 @@ export class UsersService {
     if (type == 'following') {
       // @ts-ignore
       result = await this.relationshipsModel.paginate(
-        { from: body.id, type: 1 },
+        { from: body.userId, type: 1 },
         options,
       );
     } else {
       // @ts-ignore
       result = await this.relationshipsModel.paginate(
-        { to: body.id, type: 1 },
+        { to: body.userId, type: 1 },
         options,
       );
     }

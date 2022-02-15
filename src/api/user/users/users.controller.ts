@@ -47,7 +47,7 @@ export class UsersController {
     return response;
   }
 
-  @Get('/followers')
+  @Get('followers')
   async fetchFollowers(@Body() body, @Query() query) {
     query.userId = body.userId;
 
