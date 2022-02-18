@@ -78,21 +78,14 @@ export class UsersService {
       },
     };
 
-    let result;
+    type == "following" ? options.populate.path = "to" : options.populate.path = "from";
+    const query = type == "following" ? { from: body.id, type: 1 } : { to: body.id, type: 1 };
 
-    if (type == 'following') {
-      // @ts-ignore
-      result = await this.relationshipsModel.paginate(
-        { from: body.id, type: 1 },
-        options,
-      );
-    } else {
-      // @ts-ignore
-      result = await this.relationshipsModel.paginate(
-        { to: body.id, type: 1 },
-        options,
-      );
-    }
+    // @ts-ignore
+    const result = await this.relationshipsModel.paginate(
+      query,
+      options,
+    );
 
     return result;
   }
