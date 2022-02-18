@@ -24,6 +24,6 @@ import { UsersService } from './users.service';
 })
 export class UsersModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(CheckJwtMiddleware).forRoutes(UsersController);
+    consumer.apply(CheckJwtMiddleware).forRoutes('/api/users/');
   }
 }

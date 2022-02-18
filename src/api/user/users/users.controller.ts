@@ -15,7 +15,7 @@ import {
   getProfileSchema,
 } from './users.validators';
 
-@Controller('/api/user/')
+@Controller('/api/users/')
 export class UsersController {
   constructor(private readonly userService: UsersService) {}
 
