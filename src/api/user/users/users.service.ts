@@ -58,6 +58,13 @@ export class UsersService {
     data.user = user;
     data.hoots = hoots;
 
+    const relationships = await this.relationshipsModel.find({ from: body.userId, to: body.id });
+
+    // Check if request author followed or blocked this user
+    console.log(relationships)
+    relationships.find(el => el.type == 1) ? data.followed = true : data.followed = false;
+    relationships.find(el => el.type == 2) ? data.blocked = true : data.blocked = false;
+
     return new UsersResponse(true, undefined, data);
   }
 
