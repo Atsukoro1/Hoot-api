@@ -31,9 +31,6 @@ export class MeService {
       { select: 'to -_id' },
     );
 
-    if (response.length == 0)
-      return new MeResponse(false, 'No followers found', undefined);
-
     let userIds = response.map(
       (user) => new Types.ObjectId(user.to.toString()),
     );
