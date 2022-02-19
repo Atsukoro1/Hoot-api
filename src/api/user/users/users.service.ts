@@ -46,13 +46,20 @@ export class UsersService {
       { select: '-password -ua' },
     );
 
-    body.page ? body.page : (body.page = 1);
-    const idsToGet: string[] | Array<object> = user.hoots.splice(
-      (body.page - 1) * 10,
-      10,
-    );
+    const options = {
+      page: body.page ? body.page : 1,
+      limit: 10,
+      lean: false,
+      select: "-__v ",
+      sort: { createdAt: -1 },
+      populate: {
+        path: 'author',
+        select: '_id username',
+      }
+    };
 
-    const hoots = await this.hootsModel.find({ _id: { $in: idsToGet }}).populate("author", "_id username").exec();
+    // @ts-ignore
+    const hoots = await this.hootsModel.paginate({ author: user._id }, options);
 
     const data: any = {};
     data.user = user;
