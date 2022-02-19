@@ -58,7 +58,9 @@ export class HootsController {
   }
 
   @Delete()
-  async delete(@Body() body: IDeleteReq): Promise<IHootResponse> {
+  async delete(@Body() body: IDeleteReq, @Query() query): Promise<IHootResponse> {
+    body.id = query.id;
+    
     const validation = await validate(body, deleteSchema);
     if (validation) return validation;
 

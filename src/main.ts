@@ -7,10 +7,12 @@ import * as cors from 'cors';
 (async function () {
   const app = await NestFactory.create(AppModule);
 
-  const origins = ['http://localhost:3000'];
 
   app.use(compression());
   app.use(cookieParser());
+
+  // List of allowed domains by CORS
+  const origins = ['http://localhost:3000'];
 
   // Use cors only in development environment
   process.env.NODE_ENV != "development" ?
