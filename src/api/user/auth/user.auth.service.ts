@@ -31,9 +31,10 @@ export class UserAuthService {
     await newUser.save();
 
     const token = await jwt.sign({ _id: newUser._id }, process.env.JWT_SECRET);
+
     return new UserAuthResponse(true, undefined, {
       token: token,
-      user: newUser,
+      _id: newUser._id,
     });
   }
 
@@ -50,6 +51,7 @@ export class UserAuthService {
       body.password,
       existingUser.password,
     );
+
     if (!passwordMatch)
       return new UserAuthResponse(
         false,
@@ -58,6 +60,6 @@ export class UserAuthService {
       );
 
     const token = jwt.sign({ _id: existingUser._id }, process.env.JWT_SECRET);
-    return new UserAuthResponse(true, undefined, { token: token });
+    return new UserAuthResponse(true, undefined, { token: token, _id: existingUser._id });
   }
 }
