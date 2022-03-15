@@ -40,6 +40,7 @@ export class MeService {
     const options = {
       page: body.page ? body.page : 1,
       limit: 10,
+      select: "-replies",
       sort: {
         createdAt: -1,
       },
