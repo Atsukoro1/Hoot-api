@@ -3,10 +3,8 @@ import { UserSettingsService } from './user.settings.service';
 import {
   IChangeReq,
   IUserSettingsResponse,
-  UserSettingsResponse,
   IDeleteReq,
 } from './user.settings.interfaces';
-import * as Joi from 'joi';
 import { validate, userSettingsSchema } from './user.settings.validators';
 
 @Controller('/api/user/settings')
